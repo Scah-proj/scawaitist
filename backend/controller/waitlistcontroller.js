@@ -1,4 +1,5 @@
 const Waitlist = require('../model/waitlist');
+const sendEmail = require('../utils/sendEmail'); // <-- Import the util
 
 const joinWaitlist = async (req, res) => {
   const { role, email } = req.body;
@@ -15,12 +16,23 @@ const joinWaitlist = async (req, res) => {
     }
 
     const waitlistEntry = await Waitlist.create({ role, email });
+
+    // 📧 Send confirmation email
+    const subject = 'You have joined the waitlist!';
+    const html = `
+      <h2>Welcome to SCAH Waitlist</h2>
+      <p>Hi there! You just joined the waitlist as a <strong>${role}</strong>.</p>
+      <p>We'll reach out to you as soon as we're live!</p>
+    `;
+
+    await sendEmail(email, subject, html);
+
     res.status(201).json(waitlistEntry);
   } catch (error) {
+    console.error('Waitlist error:', error);
     res.status(500).json({ message: 'Server error', error });
   }
 };
-
 
 const getWaitlist = async (req, res) => {
   try {
