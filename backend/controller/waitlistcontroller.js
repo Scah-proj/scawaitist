@@ -1,5 +1,5 @@
 const Waitlist = require('../model/waitlist');
-const sendEmail = require('../utils/sendEmail'); // <-- Import the util
+const sendEmail = require('../utils/sendEmail'); 
 
 const joinWaitlist = async (req, res) => {
   const { role, email } = req.body;
@@ -17,7 +17,7 @@ const joinWaitlist = async (req, res) => {
 
     const waitlistEntry = await Waitlist.create({ role, email });
 
-    // 📧 Send confirmation email
+    
     const subject = 'You have joined the waitlist!';
     const html = `
       <h2>Welcome to SCAH Waitlist</h2>

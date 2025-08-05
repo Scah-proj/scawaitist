@@ -1,28 +1,30 @@
+require('dotenv').config();
 const nodemailer = require('nodemailer');
 
-const sendEmail = async (to, subject, html) => {
+const sendMail = async ({ to, subject, text, html }) => {
   try {
     const transporter = nodemailer.createTransport({
-      host: process.env.EMAIL_HOST,
-      port: process.env.EMAIL_PORT,
+      service: 'gmail',
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: process.env.SMTP_EMAIL,
+        pass: process.env.SMTP_PASSWORD,
       },
     });
 
     const mailOptions = {
-      from: `"SCAH Waitlist" <${process.env.EMAIL_USER}>`,
+      from: '"SCAH" <' + process.env.SMTP_EMAIL + '>',
       to,
       subject,
+      text,
       html,
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('Email sent: ' + info.response);
-  } catch (error) {
-    console.error('Email send error:', error);
+    console.log('Email sent:', info.response);
+  } catch (err) {
+    console.error('Send email failed:', err);
+    throw new Error('Error sending mail');
   }
 };
 
-module.exports = sendEmail;
+module.exports = sendMail;
