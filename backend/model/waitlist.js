@@ -4,7 +4,7 @@ const waitlistSchema = new mongoose.Schema({
   role: {
     type: String,
     required: true,
-    enum: ['Athlete', 'Coach', 'Scout']
+    enum: ['Athlete', 'Scout']
   },
   email: {
     type: String,
