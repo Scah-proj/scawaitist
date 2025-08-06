@@ -1,5 +1,5 @@
 const Waitlist = require('../model/waitlist');
-const sendEmail = require('../utils/sendEmail'); 
+const sendEmail = require('../utils/sendEmail');
 
 const joinWaitlist = async (req, res) => {
   const { role, email } = req.body;
@@ -17,7 +17,6 @@ const joinWaitlist = async (req, res) => {
 
     const waitlistEntry = await Waitlist.create({ role, email });
 
-    
     const subject = 'You have joined the waitlist!';
     const html = `
       <h2>Welcome to SCAH Waitlist</h2>
@@ -25,7 +24,13 @@ const joinWaitlist = async (req, res) => {
       <p>We'll reach out to you as soon as we're live!</p>
     `;
 
-    await sendEmail(email, subject, html);
+    // ✅ Correct way to call sendEmail
+    await sendEmail({
+      to: email,
+      subject,
+      html,
+      text: `You just joined the waitlist as a ${role}. We'll reach out soon.`,
+    });
 
     res.status(201).json(waitlistEntry);
   } catch (error) {
