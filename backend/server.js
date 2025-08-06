@@ -9,16 +9,22 @@ const port = process.env.PORT || 5000;
 
 connectDB();
 
-const allowedOrigins = [
-  'http://scah.club',
-   'https://scah.club'
-  ];
+const allowedOrigins = ['http://scah.club', 'https://scah.club', 'https://scahnext.vercel.app'];
 
 app.use(cors({
-  origin: allowedOrigins,
+  origin: function (origin, callback) {
+    
+    if (!origin) return callback(null, true);
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: ['GET', 'POST'],
   credentials: true
 }));
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
