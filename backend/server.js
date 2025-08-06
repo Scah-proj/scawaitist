@@ -12,8 +12,11 @@ connectDB();
 
 const allowedOrigins = [
   'http://localhost:3000',
+  'https://scahnext.vercel.app',
+  'https://scah.club',
   'http://scah.club',
-  'https://scahnext.vercel.app'
+  'https://www.scah.club', // ✅ Add this
+  'http://www.scah.club',  // ✅ Add this
 ];
 
 app.use(cors({
@@ -21,7 +24,7 @@ app.use(cors({
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error("Not allowed by CORS"));
+      callback(new Error('Not allowed by CORS'));
     }
   },
   credentials: true,
