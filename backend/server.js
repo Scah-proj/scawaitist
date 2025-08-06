@@ -9,10 +9,15 @@ const port = process.env.PORT || 5000;
 
 connectDB();
 
+const allowedOrigins = [
+  'http://scah.club',
+   'https://scah.club'
+  ];
+
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://scah.club', 'https://scah.club'],
+  origin: allowedOrigins,
   methods: ['GET', 'POST'],
-  credentials: true,
+  credentials: true
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
