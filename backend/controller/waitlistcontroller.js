@@ -17,10 +17,10 @@ const joinWaitlist = async (req, res) => {
 
     const waitlistEntry = await Waitlist.create({ role, email });
 
-    const subject = 'You have joined the waitlist!';
+    const subject = 'You’ve officially been drafted by SCAH';
     const html = `
   <h2>🎉 Welcome to the Hub! 🎉</h2>
-  <h3>Subject: You’ve officially been drafted by SCAH 🏆</h3>
+  
   <p>Hey ,</p>
 
   <p>With the #1 pick in the Scouting Draft of the Year… we choose <strong>YOU</strong>!</p>
