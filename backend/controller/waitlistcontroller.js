@@ -21,7 +21,7 @@ const joinWaitlist = async (req, res) => {
     const html = `
   <h2>🎉 Welcome to the Hub! 🎉</h2>
   
-  <p>Hey, you just joined as a <strong>${role}</strong>.</p>
+  <p>Hey, you just joined as  <strong>${role}</strong>.</p>
 
   <p>With the #1 pick in the Scouting Draft of the Year… we choose <strong>YOU</strong>!</p>
 
