@@ -18,24 +18,27 @@ const joinWaitlist = async (req, res) => {
     const waitlistEntry = await Waitlist.create({ role, email });
 
     const subject = 'You’ve officially been drafted by SCAH';
-    const html = `
+   const html = `
   <h2>🎉 Welcome to the Hub! 🎉</h2>
-  
-  <p>Hey, you just joined as  <strong>${role}</strong>.</p>
 
-  <p>With the #1 pick in the Scouting Draft of the Year… we choose <strong>YOU</strong>!</p>
+  <p>You’ve officially joined SCAH as <strong>${role}</strong> — a vital part of our mission to shape the future of sports.</p>
 
-  <p>As the official Commissioner of SCAH, we’re proud to announce your draft into our elite insider circle.</p>
+  <p>We’re thrilled to welcome you to the Scout Connect Academy Hub (SCAH), a community built for those shaping the future of sports.</p>
 
-  <p>No trade clause. No combine needed. Just good vibes, big dreams, and a shared love for discovering greatness.</p>
+  <p>Your presence here signals a shared commitment to identifying and elevating talent, providing opportunities, and making meaningful connections across the sporting world.</p>
 
-  <p>We noticed your early interest in this bold vision we’re building—thank you! You’re now part of a special group getting sneak peeks, private updates, and maybe even a few top-secret scouting rumors (all legally SEC-compliant… we promise 😉).</p>
+  <p>As part of our founding inner circle, you'll receive:</p>
+  <ul>
+    <li>Early access to platform features and opportunities,</li>
+    <li>Exclusive updates on upcoming events, showcases, and partnerships,</li>
+    <li>And insight into athlete development pipelines and verified talent.</li>
+  </ul>
 
-  <p>We'll keep you in the loop as we gear up for launch—and you’ll be among the first to know when it's go-time.</p>
+  <p>We believe in building a trusted network, where athletes can shine and scouts can recruit with confidence. No noise, just value.</p>
 
-  <p>Until then, stretch those legs, shine your cleats, and get ready. The future of scouting starts now—and it starts with you.</p>
+  <p>You’ll be among the first to know when it’s go-time. Until then, thank you for believing in the vision and welcome to a new era of scouting and development.</p>
 
-  <p>Welcome to the team.</p>
+  <p>Let’s get to work.</p>
 
   <p>Sincerely,<br/>The SCAH Team</p>
 `;
