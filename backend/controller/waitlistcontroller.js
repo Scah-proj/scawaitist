@@ -19,12 +19,29 @@ const joinWaitlist = async (req, res) => {
 
     const subject = 'You have joined the waitlist!';
     const html = `
-      <h2>Welcome to SCAH Waitlist</h2>
-      <p>Hi there! You just joined the waitlist as a <strong>${role}</strong>.</p>
-      <p>We'll reach out to you as soon as we're live!</p>
-    `;
+  <h2>🎉 Welcome to the Hub! 🎉</h2>
+  <h3>Subject: You’ve officially been drafted by SCAH 🏆</h3>
+  <p>Hey ,</p>
 
-    // ✅ Correct way to call sendEmail
+  <p>With the #1 pick in the Scouting Draft of the Year… we choose <strong>YOU</strong>!</p>
+
+  <p>As the official Commissioner of SCAH, we’re proud to announce your draft into our elite insider circle.</p>
+
+  <p>No trade clause. No combine needed. Just good vibes, big dreams, and a shared love for discovering greatness.</p>
+
+  <p>We noticed your early interest in this bold vision we’re building—thank you! You’re now part of a special group getting sneak peeks, private updates, and maybe even a few top-secret scouting rumors (all legally SEC-compliant… we promise 😉).</p>
+
+  <p>We'll keep you in the loop as we gear up for launch—and you’ll be among the first to know when it's go-time.</p>
+
+  <p>Until then, stretch those legs, shine your cleats, and get ready. The future of scouting starts now—and it starts with you.</p>
+
+  <p>Welcome to the team.</p>
+
+  <p>Sincerely,<br/>The SCAH Team</p>
+`;
+
+
+    
     await sendEmail({
       to: email,
       subject,

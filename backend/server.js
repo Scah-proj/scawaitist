@@ -15,8 +15,8 @@ const allowedOrigins = [
   'https://scahnext.vercel.app',
   'https://scah.club',
   'http://scah.club',
-  'https://www.scah.club', // ✅ Add this
-  'http://www.scah.club',  // ✅ Add this
+  'https://www.scah.club', 
+  'http://www.scah.club',  
 ];
 
 app.use(cors({
