@@ -11,8 +11,8 @@ connectDB();
 
 
 const allowedOrigins = [
-  'http://localhost:3000',
-  'https://scahnext.vercel.app',
+  'http://localhost:5500',
+  'https://waitlist-virid-eight.vercel.app/', 
   'https://scah.club',
   'http://scah.club',
   'https://www.scah.club', 
