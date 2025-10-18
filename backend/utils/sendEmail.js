@@ -6,8 +6,8 @@ const sendMail = async ({ to, subject, text, html }) => {
     // ✅ Configure Zoho Mail transporter (TLS on port 587)
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.com',
-      port: 587,
-      secure: false, // TLS (STARTTLS)
+      port: 465,
+     secure: true,
       requireTLS: true,
       auth: {
         user: process.env.SMTP_EMAIL,
