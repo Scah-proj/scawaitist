@@ -1,20 +1,9 @@
 require('dotenv').config();
-const nodemailer = require('nodemailer');
+const { Resend } = require('resend');
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 const sendMail = async ({ to, subject, text, html }) => {
   try {
-   
-    const transporter = nodemailer.createTransport({
-      host: 'smtp.zoho.com',
-      port: 465,
-     secure: true,
-      requireTLS: true,
-      auth: {
-        user: process.env.SMTP_EMAIL,
-        pass: process.env.SMTP_PASSWORD,
-      },
-    });
-
     const surveyLink = process.env.SURVEY_LINK;
 
     const fullHtml = `
@@ -31,22 +20,19 @@ const sendMail = async ({ to, subject, text, html }) => {
       <p style="font-size:12px; color:#666;">This message was sent by SCAH Support.</p>
     `;
 
-    // ✅ Build mail options
-    const mailOptions = {
-      from: `"SCAH" <${process.env.SMTP_EMAIL}>`,
+    await resend.emails.send({
+      from: `SCAH <${process.env.FROM_EMAIL}>`,
       to,
       subject,
-      text: `${text || ''}\n\nTake the survey here: ${surveyLink}`,
       html: fullHtml,
-    };
+      text: `${text || ''}\n\nTake the survey here: ${surveyLink}`,
+    });
 
-    // ✅ Send email
-    const info = await transporter.sendMail(mailOptions);
-    console.log('✅ Email sent successfully:', info.response);
+    console.log('✅ Email sent via Resend');
     return true;
 
-  } catch (err) {
-    console.error('❌ Email sending failed:', err.message);
+  } catch (error) {
+    console.error('❌ Email sending failed:', error.message);
     throw new Error('EMAIL_FAILED');
   }
 };
