@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer');
 
 const sendMail = async ({ to, subject, text, html }) => {
   try {
-    // ✅ Configure Zoho Mail transporter (TLS on port 587)
+   
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.com',
       port: 465,
@@ -15,10 +15,8 @@ const sendMail = async ({ to, subject, text, html }) => {
       },
     });
 
-    // ✅ Use environment survey link
     const surveyLink = process.env.SURVEY_LINK;
 
-    // ✅ Build email HTML
     const fullHtml = `
       ${html || ''}
       <br/><br/>
