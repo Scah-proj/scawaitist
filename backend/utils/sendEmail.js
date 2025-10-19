@@ -10,7 +10,7 @@ const sendMail = async ({ to, subject, text, html }) => {
     const transporter = nodemailer.createTransport({
       host: 'smtp.zoho.com',
       port: 587,
-      secure: false, // TLS will be used if available
+      secure: false, 
       requireTLS: true,
       auth: {
         user: process.env.SMTP_EMAIL,
@@ -21,7 +21,7 @@ const sendMail = async ({ to, subject, text, html }) => {
       },
     });
 
-    // ✅ Fixed: remove misplaced backticks around the link and improve styling
+    
     const fullHtml = `
       ${html || ''}
       <br/><br/>
@@ -45,10 +45,10 @@ const sendMail = async ({ to, subject, text, html }) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('✅ Email sent successfully:', info.response);
+    console.log(' Email sent successfully:', info.response);
     return true;
   } catch (err) {
-    console.error('❌ Email sending failed:', err.message);
+    console.error(' Email sending failed:', err.message);
     throw new Error('EMAIL_FAILED');
   }
 };
