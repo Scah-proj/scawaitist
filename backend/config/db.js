@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 require('colors');
-require('dotenv').config(); // Load .env
+require('dotenv').config();
 
 const connectDB = async () => {
   try {
@@ -14,7 +14,9 @@ const connectDB = async () => {
     console.log(`✅ MongoDB Connected: ${conn.connection.host}`.cyan.underline);
   } catch (error) {
     console.error(`❌ MongoDB connection error: ${error.message}`.red.bold);
-    process.exit(1); // Exit the process on failure
+
+    // Instead of crashing, retry connection after 10 seconds
+    setTimeout(connectDB, 10000);
   }
 };
 
