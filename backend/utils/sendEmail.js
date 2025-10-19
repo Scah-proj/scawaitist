@@ -42,11 +42,11 @@ const sendMail = async ({ to, subject, text, html }) => {
     };
 
     const info = await transporter.sendMail(mailOptions);
-    console.log('✅ Email sent successfully:', info.response);
+    console.log(' Email sent successfully:', info.response);
     return true;
 
   } catch (err) {
-    console.error('❌ Email sending failed:', err.message);
+    console.error(' Email sending failed:', err.message);
     throw new Error('EMAIL_FAILED');
   }
 };
